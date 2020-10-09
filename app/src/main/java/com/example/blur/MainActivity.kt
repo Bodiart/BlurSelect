@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initListView() {
-        rv.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+        rv.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
         rv.adapter = adapter
 
         val viewForCard = layoutInflater.inflate(R.layout.el_card, null, false)

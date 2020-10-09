@@ -10,6 +10,7 @@ import com.example.blur_select.Utils.Companion.getLayoutParams
 import com.example.blur_select.Utils.Companion.getLayoutParamsMatchParent
 import com.example.blur_select.Utils.Companion.getLayoutParamsWrapContent
 import com.example.blur_select.Utils.Companion.getScreenHeightPx
+import com.example.blur_select.Utils.Companion.getScreenWidthPx
 import com.example.blur_select.extansions.dp
 import com.example.extansions.setMargins
 import com.example.extansions.setVisible
@@ -180,7 +181,8 @@ class BlurSelectPresenter(context: Context, selectView: View, viewForCard: View)
 
 //            val marginTop = positions[1]/* - (selectViewHeightScaled - selectViewHeight))*/ + selectViewHeightScaled + data.cardTopAdditionMargin
             val marginTop = showInfoCardSetupTopMargin(positions[1], selectViewHeightScaled)
-            val marginStart = (positions[0] + (selectViewWidth - selectViewWidthScaled)).toInt()
+//            val marginStart = (positions[0] + (selectViewWidth - selectViewWidthScaled)).toInt()
+            val marginStart = showInfoCardSetupStartMargin(positions[0], selectViewWidth, selectViewWidthScaled)
 
 
             data.card!!.setMargins(marginStart, marginTop, 0, 0)
@@ -200,13 +202,35 @@ class BlurSelectPresenter(context: Context, selectView: View, viewForCard: View)
         val useBottomPosition = (cardHeight + marginTopForBottomPosition) < screenHeight
 
         // also init pivot, depends on view position
-        data.card?.pivotX = 0f
         return if (useBottomPosition) {
             data.card?.pivotY = 0f
             marginTopForBottomPosition
         } else {
             data.card?.pivotY = cardHeight.toFloat()
             marginTopForTopPosition
+        }
+    }
+
+    private fun showInfoCardSetupStartMargin(originalXPosition: Int, selectViewWidth: Int, selectViewWidthScaled: Float): Int {
+        val context = getContext() ?: return 0
+
+        val cardWidth = data.config.cardWidth
+        val marginStartDelta = data.config.cardWidth
+
+        val marginStartForEndPosition = (originalXPosition + (selectViewWidth - selectViewWidthScaled)).toInt()
+        val marginStartForStartPosition = marginStartForEndPosition - marginStartDelta
+
+        val screenWidth = getScreenWidthPx(context) ?: return marginStartForEndPosition
+
+        val useEndPosition = (cardWidth + marginStartForEndPosition) < screenWidth
+
+        // also init pivot, depends on view position
+        return if (useEndPosition) {
+            data.card?.pivotX = 0f
+            marginStartForEndPosition
+        } else {
+            data.card?.pivotX = cardWidth.toFloat()
+            marginStartForStartPosition
         }
     }
     /**
