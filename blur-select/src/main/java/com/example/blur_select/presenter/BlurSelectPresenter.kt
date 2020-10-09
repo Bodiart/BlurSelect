@@ -218,7 +218,7 @@ class BlurSelectPresenter(context: Context, selectView: View, viewForCard: View)
         val marginStartDelta = data.config.cardWidth
 
         val marginStartForEndPosition = (originalXPosition + (selectViewWidth - selectViewWidthScaled)).toInt()
-        val marginStartForStartPosition = marginStartForEndPosition - marginStartDelta
+        val marginStartForStartPosition = marginStartForEndPosition - marginStartDelta/* + selectViewWidthScaled*/
 
         val screenWidth = getScreenWidthPx(context) ?: return marginStartForEndPosition
 
