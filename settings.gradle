@@ -1,0 +1,3 @@
+include ':blur-select'
+include ':app'
+rootProject.name = "Blur"
