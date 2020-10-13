@@ -9,8 +9,6 @@ import androidx.cardview.widget.CardView
 import com.example.blur_select.Utils.Companion.getLayoutParams
 import com.example.blur_select.Utils.Companion.getLayoutParamsMatchParent
 import com.example.blur_select.Utils.Companion.getLayoutParamsWrapContent
-import com.example.blur_select.Utils.Companion.getScreenHeightPx
-import com.example.blur_select.Utils.Companion.getScreenWidthPx
 import com.example.blur_select.extansions.dp
 import com.example.extansions.setMargins
 import com.example.extansions.setVisible
@@ -39,6 +37,8 @@ class BlurSelectPresenter(context: Context, selectView: View, viewForCard: View)
     internal fun discard() {
         // scale down select view duplicate
         anim.selectViewDuplicateScaleOff()
+        // shadow off select view duplicate
+        anim.selectViewDuplicateOnShadowOff()
         // hide card with anim
         anim.hideCard {
             // remove card from root
@@ -51,7 +51,12 @@ class BlurSelectPresenter(context: Context, selectView: View, viewForCard: View)
             // make original select view visible
             getSelectView()?.setVisible(true)
             // remove select view duplicate
-            getRootView()?.removeView(data.selectViewDuplicate)
+            getRootView()?.removeView(data.selectViewDuplicateCardView)
+
+            data.blurredBgImageView = null
+            data.selectViewDuplicateCardView = null
+            data.selectViewDuplicateImageView = null
+            data.card = null
 
             discardDoneCallback?.invoke()
         }
@@ -103,6 +108,10 @@ class BlurSelectPresenter(context: Context, selectView: View, viewForCard: View)
         anim.showBlurredBackground()
     }
 
+
+    /**
+     * Duplicate Select View START
+     * */
     private fun duplicateSelectView(duplicateScaleDownEnd: () -> Unit) {
         val context = getContext() ?: return
         val rootView = getRootView() ?: return
@@ -111,24 +120,47 @@ class BlurSelectPresenter(context: Context, selectView: View, viewForCard: View)
         // get select view bitmap
         val selectViewBitmap = helper.getSelectViewBitmap() ?: return
         // create select view duplicate image view
-        data.selectViewDuplicate = ImageView(context)
-        data.selectViewDuplicate!!.setImageBitmap(selectViewBitmap)
+        data.selectViewDuplicateImageView = ImageView(context)
+        data.selectViewDuplicateImageView!!.setImageBitmap(selectViewBitmap)
+        // create select view duplicate card view
+        data.selectViewDuplicateCardView = CardView(context)
+        data.selectViewDuplicateCardView!!.cardElevation = 0f
+        data.selectViewDuplicateCardView!!.radius = 0f
+        // setup card view if select view is card view
+        duplicateSelectViewSetupCardView(selectView)
+        // add image view to card view
+        data.selectViewDuplicateCardView!!.addView(
+            data.selectViewDuplicateImageView!!,
+            getLayoutParams(selectViewBitmap.width, selectViewBitmap.height)
+        )
         // add select view duplicate image view
         rootView.addView(
-            data.selectViewDuplicate!!,
+            data.selectViewDuplicateCardView!!,
             rootView.childCount,
             getLayoutParams(selectViewBitmap.width, selectViewBitmap.height)
         )
         // setup selected view duplicate margins for actual position
         IntArray(2).let { positions ->
             selectView.getLocationOnScreen(positions)
-            data.selectViewDuplicate!!.setMargins(positions[0], positions[1], 0, 0)
+            data.selectViewDuplicateCardView!!.setMargins(positions[0], positions[1], 0, 0)
         }
         // replace original select view with duplicate
         selectView.setVisible(false)
         // animate select view duplicate
         anim.selectViewDuplicateOn(duplicateScaleDownEnd)
     }
+
+    private fun duplicateSelectViewSetupCardView(selectView: View) {
+        if (selectView is CardView && data.config.selectViewCardDuplicateCardParams) {
+            data.selectViewDuplicateCardView!!.cardElevation = selectView.cardElevation
+            data.selectViewDuplicateCardView!!.radius = selectView.radius
+            data.selectViewDuplicateCardView!!.setCardBackgroundColor(selectView.cardBackgroundColor)
+        } else
+            data.selectViewDuplicateCardView!!.radius = data.config.selectViewCardRadius
+    }
+    /**
+     * Duplicate Select View END
+     * */
 
 
     /**

@@ -5,11 +5,12 @@ import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import com.example.blur_select.extansions.blurSelectAnimateAlpha
 import com.example.blur_select.extansions.blurSelectAnimateScale
-import com.example.blur_select.extansions.testLog
+import com.example.blur_select.extansions.blurSelectAnimateShadow
 
 class BlurSelectAnim(private val data: BlurSelectData) {
     private var blurredBgImageViewAnimator: ValueAnimator? = null
     private var selectViewDuplicateAnimator: ValueAnimator? = null
+    private var selectViewDuplicateShadowAnimator: ValueAnimator? = null
     private var cardScaleAnimator: ValueAnimator? = null
     private var cardAlphaAnimator: ValueAnimator? = null
 
@@ -102,14 +103,15 @@ class BlurSelectAnim(private val data: BlurSelectData) {
     fun selectViewDuplicateOn(duplicateScaleDownEnd: () -> Unit, endCallback: (() -> Unit)? = null) {
         selectViewDuplicateOnScaleDown( endCallback = {
             duplicateScaleDownEnd()
+            selectViewDuplicateOnShadowOn()
             selectViewDuplicateOnScaleUp(endCallback)
         })
     }
 
     private fun selectViewDuplicateOnScaleDown(endCallback: (() -> Unit)) {
         selectViewDuplicateAnimator?.cancel()
-        data.selectViewDuplicate ?: return
-        selectViewDuplicateAnimator = data.selectViewDuplicate!!.blurSelectAnimateScale(
+        data.selectViewDuplicateCardView ?: return
+        selectViewDuplicateAnimator = data.selectViewDuplicateCardView!!.blurSelectAnimateScale(
             data.config.selectViewAnimValueScaleDownTo,
             data.config.selectViewAnimDurationScaleDown,
             interpolator = AccelerateInterpolator(),
@@ -119,8 +121,8 @@ class BlurSelectAnim(private val data: BlurSelectData) {
 
     private fun selectViewDuplicateOnScaleUp(endCallback: (() -> Unit)?) {
         selectViewDuplicateAnimator?.cancel()
-        data.selectViewDuplicate ?: return
-        selectViewDuplicateAnimator = data.selectViewDuplicate!!.blurSelectAnimateScale(
+        data.selectViewDuplicateCardView ?: return
+        selectViewDuplicateAnimator = data.selectViewDuplicateCardView!!.blurSelectAnimateScale(
             data.config.selectViewAnimValueScaleUpTo,
             data.config.selectViewAnimDurationScaleUp,
             interpolator = DecelerateInterpolator(),
@@ -130,12 +132,37 @@ class BlurSelectAnim(private val data: BlurSelectData) {
 
     fun selectViewDuplicateScaleOff(endCallback: (() -> Unit)? = null) {
         selectViewDuplicateAnimator?.cancel()
-        data.selectViewDuplicate ?: return
-        selectViewDuplicateAnimator = data.selectViewDuplicate!!.blurSelectAnimateScale(
+        data.selectViewDuplicateCardView ?: return
+        selectViewDuplicateAnimator = data.selectViewDuplicateCardView!!.blurSelectAnimateScale(
             data.config.selectViewAnimValueScaleOffTo,
             data.config.selectViewAnimDurationScaleOff,
             interpolator = DecelerateInterpolator(),
             endCallback = endCallback
+        )
+    }
+
+    private fun selectViewDuplicateOnShadowOn() {
+        if (!data.config.selectViewCardShadowAnimEnabled)
+            return
+        selectViewDuplicateShadowAnimator?.cancel()
+        data.selectViewDuplicateCardView ?: return
+        selectViewDuplicateShadowAnimator = data.selectViewDuplicateCardView!!.blurSelectAnimateShadow(
+            data.config.selectViewCardAnimValueShadowOnFrom,
+            data.config.selectViewCardAnimValueShadowOnTo,
+            data.config.selectViewCardAnimDurationShadowOn,
+            interpolator = DecelerateInterpolator()
+        )
+    }
+
+    fun selectViewDuplicateOnShadowOff() {
+        if (!data.config.selectViewCardShadowAnimEnabled)
+            return
+        selectViewDuplicateShadowAnimator?.cancel()
+        data.selectViewDuplicateCardView ?: return
+        selectViewDuplicateShadowAnimator = data.selectViewDuplicateCardView!!.blurSelectAnimateShadow(
+            data.config.selectViewCardAnimValueShadowOffTo,
+            data.config.selectViewCardAnimDurationShadowOff,
+            interpolator = DecelerateInterpolator()
         )
     }
     /**

@@ -4,6 +4,7 @@ import android.animation.TimeInterpolator
 import android.animation.ValueAnimator
 import android.view.View
 import android.view.animation.Animation
+import androidx.cardview.widget.CardView
 import androidx.core.animation.addListener
 import androidx.lifecycle.MutableLiveData
 
@@ -180,6 +181,59 @@ fun View.blurSelectAnimateScale(
 }
 /**
  * Scale END
+ * */
+
+
+/**
+ * Shadow start
+ * */
+fun CardView.blurSelectAnimateShadow(
+    fromValue: Float,
+    toValue: Float,
+    duration: Long,
+    interpolator: TimeInterpolator? = null,
+    updateCallback: ((value: Float) -> Unit)? = null,
+    endCallback: (() -> Unit)? = null,
+    startCallback: (() -> Unit)? = null
+): ValueAnimator? {
+    val animator = ValueAnimator.ofFloat(fromValue, toValue).apply {
+        // duration
+        setDuration(duration)
+        // interpolator
+        if (interpolator != null)
+            setInterpolator(interpolator)
+        // update listener
+        addUpdateListener {  valueAnimator ->
+            val value = valueAnimator.animatedValue as Float
+            this@blurSelectAnimateShadow.cardElevation = value
+            updateCallback?.invoke(value)
+        }
+        addListener(
+            onStart = {
+                startCallback?.invoke()
+            },
+            onEnd = {
+                endCallback?.invoke()
+            }
+        )
+    }
+    animator.start()
+
+    return animator
+}
+
+fun CardView.blurSelectAnimateShadow(
+    toValue: Float,
+    duration: Long,
+    interpolator: TimeInterpolator? = null,
+    updateCallback: ((value: Float) -> Unit)? = null,
+    endCallback: (() -> Unit)? = null,
+    startCallback: (() -> Unit)? = null
+): ValueAnimator? {
+    return blurSelectAnimateShadow(this.cardElevation, toValue, duration, interpolator, updateCallback, endCallback, startCallback)
+}
+/**
+ * Shadow end
  * */
 
 fun Animation.blurSelectSetListener(

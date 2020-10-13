@@ -17,7 +17,8 @@ class BlurSelectData(context: Context, selectView: View, rootView: ViewGroup, vi
     val viewForCardRef = WeakReference(viewForCard)
 
     var blurredBgImageView: ImageView? = null
-    var selectViewDuplicate: ImageView? = null
+    var selectViewDuplicateCardView: CardView? = null
+    var selectViewDuplicateImageView: ImageView? = null
     var card: CardView? = null
 
     // listeners

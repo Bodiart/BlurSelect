@@ -49,6 +49,7 @@ class BlurConfig {
     /**
      * Select view START
      * */
+    /** image view */
     // anim durations
     var selectViewAnimDurationScaleDown = 150L // scale down
     var selectViewAnimDurationScaleUp   = 200L // scale up
@@ -57,6 +58,18 @@ class BlurConfig {
     var selectViewAnimValueScaleDownTo = 0.97f  // scale down to
     var selectViewAnimValueScaleUpTo   = 1.07f  // scale up to
     var selectViewAnimValueScaleOffTo  = 1f  // scale up to
+    /** card view */
+    // params
+    var selectViewCardDuplicateCardParams = true // duplicate select view card view params
+    var selectViewCardRadius = 0f // select view duplicate card corner radius (DON'T WORK IF selectViewCardDuplicateCardParams == true)
+    var selectViewCardShadowAnimEnabled = false
+    // anim durations
+    var selectViewCardAnimDurationShadowOn  = 0L // shadow on WARNING!!! : DON'T USE DURATION BIGGER THAN selectViewAnimDurationScaleUp
+    var selectViewCardAnimDurationShadowOff = 0L // shadow on WARNING!!! : DON'T USE DURATION BIGGER THAN selectViewAnimDurationScaleOff
+    // anim values
+    var selectViewCardAnimValueShadowOnFrom = 0f // shadow on from
+    var selectViewCardAnimValueShadowOnTo   = 0f  // shadow on to
+    var selectViewCardAnimValueShadowOffTo  = 0f  // shadow off to
     /**
      * Select view END
      * */
