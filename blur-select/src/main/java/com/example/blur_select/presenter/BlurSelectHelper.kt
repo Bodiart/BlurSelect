@@ -15,7 +15,11 @@ class BlurSelectHelper(private val data: BlurSelectData) {
 
     fun getBlurredBackgroundBitmap(): Bitmap? {
         data.rootViewRef.get() ?: return null
-        return BlurKit.getInstance().fastBlur(data.rootViewRef.get(), 14, 0.2f)
+        return BlurKit.getInstance().fastBlur(
+            data.rootViewRef.get(),
+            data.config.blurredBgBlurRadius,
+            data.config.blurredBgBlurDownScaleFactor
+        )
     }
 
     /**

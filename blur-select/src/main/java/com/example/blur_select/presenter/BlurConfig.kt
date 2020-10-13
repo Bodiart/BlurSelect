@@ -8,6 +8,9 @@ class BlurConfig {
     /**
      * Blurred background START
      * */
+    // blur values
+    var blurredBgBlurRadius = 14
+    var blurredBgBlurDownScaleFactor = 0.2f // bg bitmap downscale (for better performance)
     // anim durations
     var blurredBgAnimDurationShow = 200L // show
     var blurredBgAnimDurationHide = 200L // hide
