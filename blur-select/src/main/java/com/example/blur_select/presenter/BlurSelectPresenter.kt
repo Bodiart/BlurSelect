@@ -164,7 +164,10 @@ class BlurSelectPresenter(context: Context, selectView: View, viewForCard: View)
     private fun showInfoCardAddInnerView(viewForCard: View) {
         if (viewForCard.parent != null)
             (viewForCard.parent as ViewGroup).removeView(viewForCard)
-        data.card!!.addView(viewForCard, getLayoutParams(data.config.cardWidth, data.config.cardHeight))
+        data.card!!.addView(
+            viewForCard,
+            getLayoutParams(data.config.cardWidth, data.config.cardHeight)
+        )
     }
 
     private fun showInfoCardSetupMargins(selectView: View) {
@@ -179,58 +182,16 @@ class BlurSelectPresenter(context: Context, selectView: View, viewForCard: View)
             val selectViewWidthScaled = selectView.measuredWidth * scaleForOneSide
             val selectViewHeightScaled = selectView.measuredHeight * scaleForOneSide
 
-//            val marginTop = positions[1]/* - (selectViewHeightScaled - selectViewHeight))*/ + selectViewHeightScaled + data.cardTopAdditionMargin
-            val marginTop = showInfoCardSetupTopMargin(positions[1], selectViewHeightScaled)
-//            val marginStart = (positions[0] + (selectViewWidth - selectViewWidthScaled)).toInt()
-            val marginStart = showInfoCardSetupStartMargin(positions[0], selectViewWidth, selectViewWidthScaled)
-
+            val marginTop =
+                helper.getCardTopMargin(getContext(), positions[1], selectViewHeightScaled)
+            val marginStart = helper.getCardStartMargin(
+                getContext(),
+                positions[0],
+                selectViewWidth,
+                selectViewWidthScaled
+            )
 
             data.card!!.setMargins(marginStart, marginTop, 0, 0)
-        }
-    }
-
-    private fun showInfoCardSetupTopMargin(originalYPosition: Int, selectViewHeightScaled: Float): Int {
-        val context = getContext() ?: return 0
-        val marginTopDelta = selectViewHeightScaled + data.config.cardTopAdditionMargin
-        val cardHeight = data.config.cardHeight
-
-        val marginTopForBottomPosition = (originalYPosition + marginTopDelta).toInt()
-        val marginTopForTopPosition = originalYPosition - data.config.cardTopAdditionMargin - cardHeight
-
-        val screenHeight = getScreenHeightPx(context) ?: return marginTopForBottomPosition
-
-        val useBottomPosition = (cardHeight + marginTopForBottomPosition) < screenHeight
-
-        // also init pivot, depends on view position
-        return if (useBottomPosition) {
-            data.card?.pivotY = 0f
-            marginTopForBottomPosition
-        } else {
-            data.card?.pivotY = cardHeight.toFloat()
-            marginTopForTopPosition
-        }
-    }
-
-    private fun showInfoCardSetupStartMargin(originalXPosition: Int, selectViewWidth: Int, selectViewWidthScaled: Float): Int {
-        val context = getContext() ?: return 0
-
-        val cardWidth = data.config.cardWidth
-        val marginStartDelta = data.config.cardWidth
-
-        val marginStartForEndPosition = (originalXPosition + (selectViewWidth - selectViewWidthScaled)).toInt()
-        val marginStartForStartPosition = marginStartForEndPosition - marginStartDelta/* + selectViewWidthScaled*/
-
-        val screenWidth = getScreenWidthPx(context) ?: return marginStartForEndPosition
-
-        val useEndPosition = (cardWidth + marginStartForEndPosition) < screenWidth
-
-        // also init pivot, depends on view position
-        return if (useEndPosition) {
-            data.card?.pivotX = 0f
-            marginStartForEndPosition
-        } else {
-            data.card?.pivotX = cardWidth.toFloat()
-            marginStartForStartPosition
         }
     }
     /**
