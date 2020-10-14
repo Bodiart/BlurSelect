@@ -84,7 +84,7 @@ class MainActivity : AppCompatActivity() {
             selectViewAnimValueScaleDownTo = 1f
             selectViewAnimDurationScaleDown = 0
             // scale up
-            selectViewAnimValueScaleUpTo = 1f
+            selectViewAnimValueScaleUpTo = 1.1f
             // scale off
             selectViewAnimValueScaleOffTo = 1f
             // select view card

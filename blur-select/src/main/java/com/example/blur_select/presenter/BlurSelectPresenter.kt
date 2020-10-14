@@ -50,6 +50,8 @@ class BlurSelectPresenter(context: Context, selectView: View, viewForCard: View)
         anim.hideBlurredBackground {
             // remove blur image view from root view
             getRootView()?.removeView(data.blurredBgImageView)
+            // hide select view duplicate
+            hideSelectViewDuplicate()
             // make original select view visible
             showSelectView()
             // remove select view duplicate
@@ -90,6 +92,14 @@ class BlurSelectPresenter(context: Context, selectView: View, viewForCard: View)
 
     private fun hideSelectView() {
         getSelectView()?.alpha = 0f
+    }
+
+    private fun showSelectViewDuplicate() {
+        data.selectViewDuplicateCardView?.alpha = 1f
+    }
+
+    private fun hideSelectViewDuplicate() {
+        data.selectViewDuplicateCardView?.alpha = 0f
     }
 
     private fun blurBackground() {
@@ -137,6 +147,7 @@ class BlurSelectPresenter(context: Context, selectView: View, viewForCard: View)
         data.selectViewDuplicateCardView!!.cardElevation = 0f
         data.selectViewDuplicateCardView!!.radius = 0f
         data.selectViewDuplicateCardView!!.setContentPadding(0, 0, 0, 0)
+        hideSelectViewDuplicate() // hide duplicate at start
         // setup card view if select view is card view
         duplicateSelectViewSetupCardView(selectView)
         // add image view to card view
@@ -156,8 +167,9 @@ class BlurSelectPresenter(context: Context, selectView: View, viewForCard: View)
             data.selectViewDuplicateCardView!!.setMargins(positions[0], positions[1], 0, 0)
         }
         // replace original select view with duplicate
+        showSelectViewDuplicate()
         hideSelectView()
-        // sele view replace - can blur bg
+        // select view replaced with duplicate - can blur bg
         selectViewReplaced()
         // animate select view duplicate
         anim.selectViewDuplicateOn(duplicateScaleDownEnd)
