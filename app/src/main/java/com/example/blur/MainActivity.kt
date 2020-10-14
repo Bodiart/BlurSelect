@@ -1,20 +1,13 @@
 package com.example.blur
 
-import android.animation.ValueAnimator
-import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
-import android.widget.ArrayAdapter
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.core.view.ViewCompat
-import androidx.core.view.get
-import androidx.databinding.ObservableFloat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.blur.databinding.ActivityMainBinding
@@ -22,7 +15,6 @@ import com.example.blur_select.BlurSelect
 import com.example.blur_select.presenter.BlurConfig
 import com.example.extansions.dp
 import com.example.extansions.setMarginTop
-import com.google.android.material.textview.MaterialTextView
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -96,6 +88,7 @@ class MainActivity : AppCompatActivity() {
             selectViewCardAnimValueShadowOnFrom = cardElevation
             selectViewCardAnimValueShadowOnTo = cardElevation
             selectViewCardAnimValueShadowOffTo = cardElevation
+            // card
         }
         BlurSelect.selectView(this, selectView, viewForCard, config = config).apply {
             addCardListener(R.id.edit) {

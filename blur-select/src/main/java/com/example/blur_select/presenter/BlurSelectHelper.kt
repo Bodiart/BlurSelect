@@ -50,12 +50,12 @@ class BlurSelectHelper(private val data: BlurSelectData) {
         selectViewHeightScaled: Float
     ): Int {
         context ?: return 0
-        val marginTopDelta = selectViewHeightScaled + data.config.cardTopAdditionMargin
+        val marginTopDelta = selectViewHeightScaled + 16.dp + data.config.cardTopAdditionMargin
         val cardHeight = data.config.cardHeight
 
         val marginTopForBottomPosition = (originalYPosition + marginTopDelta).toInt()
         val marginTopForTopPosition =
-            originalYPosition - data.config.cardTopAdditionMargin - cardHeight
+            originalYPosition - 16.dp - data.config.cardTopAdditionMargin - cardHeight
 
         val screenHeight = Utils.getScreenHeightPx(context) ?: return marginTopForBottomPosition
 
@@ -84,11 +84,11 @@ class BlurSelectHelper(private val data: BlurSelectData) {
 
         // start of card to start of select view
         val cardStartToStartOfViewMargin =
-            (originalXPosition + (selectViewWidth - selectViewWidthScaled)).toInt()
+            (originalXPosition + (selectViewWidth - selectViewWidthScaled)).toInt() + data.config.cardStartEndAdditionMargin
         // end of card to end of screen
-        val cardEndToEndOfScreenMargin = screenWidth - cardWidth - 16.dp
+        val cardEndToEndOfScreenMargin = screenWidth - cardWidth - 16.dp - data.config.cardStartEndAdditionMargin
         // start of card to start of screen
-        val cardStartToStartOfScreenMargin = 16.dp
+        val cardStartToStartOfScreenMargin = 16.dp + data.config.cardStartEndAdditionMargin
 
         // select view end X position
         val selectViewScaledEndXPosition = originalXPosition + selectViewWidthScaled
