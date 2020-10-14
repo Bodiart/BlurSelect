@@ -29,6 +29,7 @@ class BlurConfig {
     // sizes
     var cardWidth: Int  = 200.dp // width
     var cardHeight: Int = 180.dp // height
+    var cardAutoCalculateInnerViewSize: Boolean = true // auto calculate card inner view size
     var cardCornersRadius = 12.dp.toFloat()
     var cardTopAdditionMargin: Int = 0 // top addition margin
     var cardStartEndAdditionMargin: Int = 0 // start/end addition margin depends of card position

@@ -1,9 +1,14 @@
 package com.example.blur_select
 
+import android.app.Activity
 import android.content.Context
 import android.graphics.Point
+import android.util.DisplayMetrics
+import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import com.example.blur_select.entity.ViewSize
+
 
 class Utils {
     companion object {
@@ -36,6 +41,13 @@ class Utils {
             return size.y
         }
 
+        fun getViewSizes(view: View, context: Context): ViewSize? {
+            val screenWidth = getScreenWidthPx(context) ?: return null
+            val screenHeight = getScreenHeightPx(context) ?: return null
+            view.measure(screenWidth, screenHeight)
+
+            return ViewSize(view.measuredWidth, view.measuredHeight)
+        }
 
     }
 }

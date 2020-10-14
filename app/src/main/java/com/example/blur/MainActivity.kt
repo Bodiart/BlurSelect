@@ -88,7 +88,6 @@ class MainActivity : AppCompatActivity() {
             selectViewCardAnimValueShadowOnFrom = cardElevation
             selectViewCardAnimValueShadowOnTo = cardElevation
             selectViewCardAnimValueShadowOffTo = cardElevation
-            // card
         }
         BlurSelect.selectView(this, selectView, viewForCard, config = config).apply {
             addCardListener(R.id.edit) {

@@ -8,10 +8,8 @@ import android.widget.ImageView
 import androidx.cardview.widget.CardView
 import com.example.blur_select.Utils.Companion.getLayoutParams
 import com.example.blur_select.Utils.Companion.getLayoutParamsMatchParent
-import com.example.blur_select.Utils.Companion.getLayoutParamsWrapContent
-import com.example.blur_select.extansions.dp
+import com.example.blur_select.Utils.Companion.getViewSizes
 import com.example.extansions.setMargins
-import com.example.extansions.setVisible
 
 class BlurSelectPresenter(context: Context, selectView: View, viewForCard: View) {
 
@@ -131,7 +129,10 @@ class BlurSelectPresenter(context: Context, selectView: View, viewForCard: View)
     /**
      * Duplicate Select View START
      * */
-    private fun duplicateSelectView(selectViewReplaced: () -> Unit, duplicateScaleDownEnd: () -> Unit) {
+    private fun duplicateSelectView(
+        selectViewReplaced: () -> Unit,
+        duplicateScaleDownEnd: () -> Unit
+    ) {
         val context = getContext() ?: return
         val rootView = getRootView() ?: return
         val selectView = getSelectView() ?: return
@@ -198,16 +199,34 @@ class BlurSelectPresenter(context: Context, selectView: View, viewForCard: View)
         val selectView = getSelectView() ?: return
         val viewForCard = getViewForCard() ?: return
 
+
+        // setup inner view size
+        showInfoCardSetupInnerViewSize(context, viewForCard)
         // create card
         showInfoCardCreateCard(context)
         // add card inner view
         showInfoCardAddInnerView(viewForCard)
         // add card to root
-        rootView.addView(data.card!!, rootView.childCount, getLayoutParamsWrapContent())
+        rootView.addView(
+            data.card!!,
+            rootView.childCount,
+            getLayoutParams(data.config.cardWidth, data.config.cardHeight)
+        )
         // setup margins fot actual position
         showInfoCardSetupMargins(selectView)
         // animate card
         anim.showCard()
+    }
+
+    private fun showInfoCardSetupInnerViewSize(context: Context, viewForCard: View) {
+        if (!data.config.cardAutoCalculateInnerViewSize)
+            return
+        getViewSizes(viewForCard, context)?.let { innerViewSize ->
+            if (innerViewSize.width != 0)
+                data.config.cardWidth = innerViewSize.width
+            if (innerViewSize.height != 0)
+                data.config.cardHeight = innerViewSize.height
+        }
     }
 
     private fun showInfoCardCreateCard(context: Context) {
@@ -222,9 +241,10 @@ class BlurSelectPresenter(context: Context, selectView: View, viewForCard: View)
     private fun showInfoCardAddInnerView(viewForCard: View) {
         if (viewForCard.parent != null)
             (viewForCard.parent as ViewGroup).removeView(viewForCard)
+        // add inner view to card
         data.card!!.addView(
             viewForCard,
-            getLayoutParams(data.config.cardWidth, data.config.cardHeight)
+            getLayoutParamsMatchParent()
         )
     }
 
