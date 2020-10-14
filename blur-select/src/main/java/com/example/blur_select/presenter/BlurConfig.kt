@@ -1,5 +1,6 @@
 package com.example.blur_select.presenter
 
+import android.graphics.Color
 import android.view.ViewGroup
 import com.example.blur_select.extansions.dp
 
@@ -62,6 +63,7 @@ class BlurConfig {
     // params
     var selectViewCardDuplicateCardParams = true // duplicate select view card view params
     var selectViewCardRadius = 0f // select view duplicate card corner radius (DON'T WORK IF selectViewCardDuplicateCardParams == true)
+    var selectViewCardBackgroundColor = Color.WHITE // select view duplicate card bg color (DON'T WORK IF selectViewCardDuplicateCardParams == true)
     var selectViewCardShadowAnimEnabled = false
     // anim durations
     var selectViewCardAnimDurationShadowOn  = 0L // shadow on WARNING!!! : DON'T USE DURATION BIGGER THAN selectViewAnimDurationScaleUp

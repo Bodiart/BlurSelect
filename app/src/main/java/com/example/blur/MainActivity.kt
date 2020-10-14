@@ -11,6 +11,7 @@ import android.view.WindowManager
 import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.core.view.ViewCompat
 import androidx.core.view.get
 import androidx.databinding.ObservableFloat
@@ -19,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.blur.databinding.ActivityMainBinding
 import com.example.blur_select.BlurSelect
 import com.example.blur_select.presenter.BlurConfig
+import com.example.extansions.dp
 import com.example.extansions.setMarginTop
 import com.google.android.material.textview.MaterialTextView
 import kotlinx.android.synthetic.main.activity_main.*
@@ -27,7 +29,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var mBinding: ActivityMainBinding
 
-    private val towns = arrayListOf("London", "Kyiv", "Lutsk", "Kovel", "Odessa", "Volodymyr", "Kharkiv", "New Jersey", "New York")
+    private val towns = arrayListOf("", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "")
     private var adapter = Adapter(towns)
 
 
@@ -72,9 +74,28 @@ class MainActivity : AppCompatActivity() {
 
     private fun createBlurSelect(selectView: View, viewForCard: View, item: String) {
         val config = BlurConfig().apply {
+//            selectViewAnimValueScaleDownTo = 1f
+//            selectViewAnimDurationScaleDown = 0
+//            selectViewAnimValueScaleUpTo = 1f
+
+//            val cardElevation = 4.dp.toFloat()
+            val cardElevation = (selectView as CardView).cardElevation
+            // scale down
             selectViewAnimValueScaleDownTo = 1f
             selectViewAnimDurationScaleDown = 0
-            selectViewAnimValueScaleUpTo = 1.04f
+            // scale up
+            selectViewAnimValueScaleUpTo = 1f
+            // scale off
+            selectViewAnimValueScaleOffTo = 1f
+            // select view card
+            selectViewCardDuplicateCardParams = false
+            selectViewCardRadius = 12.dp.toFloat()
+            selectViewCardBackgroundColor = Color.WHITE
+            // shadow
+            selectViewCardShadowAnimEnabled = true
+            selectViewCardAnimValueShadowOnFrom = cardElevation
+            selectViewCardAnimValueShadowOnTo = cardElevation
+            selectViewCardAnimValueShadowOffTo = cardElevation
         }
         BlurSelect.selectView(this, selectView, viewForCard, config = config).apply {
             addCardListener(R.id.edit) {

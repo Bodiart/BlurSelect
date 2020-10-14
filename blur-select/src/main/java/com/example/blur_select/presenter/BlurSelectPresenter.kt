@@ -23,10 +23,12 @@ class BlurSelectPresenter(context: Context, selectView: View, viewForCard: View)
 
 
     internal fun select() {
-        // blur background
-        blurBackground()
         // make duplicate like select view
         duplicateSelectView(
+            selectViewReplaced = {
+                // blur background (select view if already hidden)
+                blurBackground()
+            },
             duplicateScaleDownEnd = {
                 // showInfoCard
                 showInfoCard()
@@ -49,7 +51,7 @@ class BlurSelectPresenter(context: Context, selectView: View, viewForCard: View)
             // remove blur image view from root view
             getRootView()?.removeView(data.blurredBgImageView)
             // make original select view visible
-            getSelectView()?.setVisible(true)
+            showSelectView()
             // remove select view duplicate
             getRootView()?.removeView(data.selectViewDuplicateCardView)
 
@@ -82,13 +84,21 @@ class BlurSelectPresenter(context: Context, selectView: View, viewForCard: View)
 
     private fun getViewForCard() = data.viewForCardRef.get()
 
+    private fun showSelectView() {
+        getSelectView()?.alpha = 1f
+    }
+
+    private fun hideSelectView() {
+        getSelectView()?.alpha = 0f
+    }
+
     private fun blurBackground() {
         val context = getContext() ?: return
         val rootView = getRootView() ?: return
         val selectView = getSelectView() ?: return
 
         // before getting bg blur bitmap - make select view invisible
-        selectView.setVisible(false)
+//        hideSelectView() // select view already hidden
         // get blurred background bitmap
         val blurredBgBitmap = helper.getBlurredBackgroundBitmap() ?: return
         // create blurred bg image view
@@ -112,7 +122,7 @@ class BlurSelectPresenter(context: Context, selectView: View, viewForCard: View)
     /**
      * Duplicate Select View START
      * */
-    private fun duplicateSelectView(duplicateScaleDownEnd: () -> Unit) {
+    private fun duplicateSelectView(selectViewReplaced: () -> Unit, duplicateScaleDownEnd: () -> Unit) {
         val context = getContext() ?: return
         val rootView = getRootView() ?: return
         val selectView = getSelectView() ?: return
@@ -126,6 +136,7 @@ class BlurSelectPresenter(context: Context, selectView: View, viewForCard: View)
         data.selectViewDuplicateCardView = CardView(context)
         data.selectViewDuplicateCardView!!.cardElevation = 0f
         data.selectViewDuplicateCardView!!.radius = 0f
+        data.selectViewDuplicateCardView!!.setContentPadding(0, 0, 0, 0)
         // setup card view if select view is card view
         duplicateSelectViewSetupCardView(selectView)
         // add image view to card view
@@ -145,7 +156,9 @@ class BlurSelectPresenter(context: Context, selectView: View, viewForCard: View)
             data.selectViewDuplicateCardView!!.setMargins(positions[0], positions[1], 0, 0)
         }
         // replace original select view with duplicate
-        selectView.setVisible(false)
+        hideSelectView()
+        // sele view replace - can blur bg
+        selectViewReplaced()
         // animate select view duplicate
         anim.selectViewDuplicateOn(duplicateScaleDownEnd)
     }
@@ -155,8 +168,10 @@ class BlurSelectPresenter(context: Context, selectView: View, viewForCard: View)
             data.selectViewDuplicateCardView!!.cardElevation = selectView.cardElevation
             data.selectViewDuplicateCardView!!.radius = selectView.radius
             data.selectViewDuplicateCardView!!.setCardBackgroundColor(selectView.cardBackgroundColor)
-        } else
+        } else {
             data.selectViewDuplicateCardView!!.radius = data.config.selectViewCardRadius
+            data.selectViewDuplicateCardView!!.setCardBackgroundColor(data.config.selectViewCardBackgroundColor)
+        }
     }
     /**
      * Duplicate Select View END
@@ -228,11 +243,6 @@ class BlurSelectPresenter(context: Context, selectView: View, viewForCard: View)
     }
     /**
      * Show info card END
-     * */
-
-
-    /**
-     * Setup
      * */
 
 
