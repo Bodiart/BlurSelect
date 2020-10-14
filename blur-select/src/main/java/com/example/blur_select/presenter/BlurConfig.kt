@@ -29,8 +29,10 @@ class BlurConfig {
     // sizes
     var cardWidth: Int  = 200.dp // width
     var cardHeight: Int = 180.dp // height
+    var cardCornersRadius = 12.dp.toFloat()
     var cardTopAdditionMargin: Int = 16.dp // top addition margin
     var cardStartAdditionMargin: Int = 0 // start addition margin
+    var cardEndAdditionMargin: Int = 0 // start addition margin
     // anim durations
     var cardAnimDurationScaleShow = 200L // scale show
     var cardAnimDurationScaleHide = 200L // scale hide

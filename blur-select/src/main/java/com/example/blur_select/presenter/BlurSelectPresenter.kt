@@ -47,12 +47,11 @@ class BlurSelectPresenter(context: Context, selectView: View, viewForCard: View)
             getRootView()?.removeView(data.card)
         }
         // hide blur
-        anim.hideBlurredBackground {
+        anim.hideBlurredBackground { // end
             // remove blur image view from root view
             getRootView()?.removeView(data.blurredBgImageView)
-            // hide select view duplicate
+            // replace select view duplicate with original
             hideSelectViewDuplicate()
-            // make original select view visible
             showSelectView()
             // remove select view duplicate
             getRootView()?.removeView(data.selectViewDuplicateCardView)
@@ -214,7 +213,7 @@ class BlurSelectPresenter(context: Context, selectView: View, viewForCard: View)
     private fun showInfoCardCreateCard(context: Context) {
         data.card = CardView(context)
         data.card!!.setCardBackgroundColor(Color.WHITE)
-        data.card!!.radius = 12.dp.toFloat()
+        data.card!!.radius = data.config.cardCornersRadius
         data.card!!.scaleX = 0f
         data.card!!.scaleY = 0f
         data.card!!.alpha = 0f
