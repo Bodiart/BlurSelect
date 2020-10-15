@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.blur.databinding.ActivityMainBinding
 import com.example.blur_select.BlurSelect
 import com.example.blur_select.config.BlurConfig
+import com.example.blur_select.config.BlurConfigs
 import com.example.extansions.dp
 import com.example.extansions.setMarginTop
 import kotlinx.android.synthetic.main.activity_main.*
@@ -60,35 +61,12 @@ class MainActivity : AppCompatActivity() {
 
         adapter.setOnItemClickListener { adapter, view, position ->
             createBlurSelect(view, viewForCard, adapter.getItem(position) as String)
-//            true
         }
     }
 
     private fun createBlurSelect(selectView: View, viewForCard: View, item: String) {
-        val config = BlurConfig().apply {
-//            selectViewAnimValueScaleDownTo = 1f
-//            selectViewAnimDurationScaleDown = 0
-//            selectViewAnimValueScaleUpTo = 1f
-
-//            val cardElevation = 4.dp.toFloat()
-            val cardElevation = (selectView as CardView).cardElevation
-            // scale down
-            selectViewAnimValueScaleDownTo = 1f
-            selectViewAnimDurationScaleDown = 0
-            // scale up
-            selectViewAnimValueScaleUpTo = 1.05f
-            // scale off
-            selectViewAnimValueScaleOffTo = 1f
-            // select view card
-            selectViewCardDuplicateCardParams = false
-            selectViewCardRadius = 12.dp.toFloat()
-            selectViewCardBackgroundColor = Color.WHITE
-            // shadow
-            selectViewCardShadowAnimEnabled = true
-            selectViewCardAnimValueShadowOnFrom = cardElevation
-            selectViewCardAnimValueShadowOnTo = cardElevation
-            selectViewCardAnimValueShadowOffTo = cardElevation
-        }
+        val cardElevation = (selectView as CardView).cardElevation
+        val config = BlurConfigs.onlyScaleUpConfig(1.03f)
         BlurSelect.selectView(this, selectView, viewForCard, config = config).apply {
             addCardListener(R.id.edit) {
                 BlurSelect.discard()
