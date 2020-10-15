@@ -118,7 +118,7 @@ class BlurSelectPresenter(context: Context, selectView: View, viewForCard: View)
         // add blurred bg image view to root
         rootView.addView(
             data.blurredBgImageView!!,
-            rootView.childCount,
+            rootView.childCount - 1,
             getLayoutParamsMatchParent()
         )
         // animate blurred bg image view
