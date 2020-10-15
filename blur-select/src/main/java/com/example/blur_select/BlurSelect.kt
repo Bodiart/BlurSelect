@@ -2,8 +2,7 @@ package com.example.blur_select
 
 import android.content.Context
 import android.view.View
-import android.view.ViewGroup
-import com.example.blur_select.presenter.BlurConfig
+import com.example.blur_select.config.BlurConfig
 import com.example.blur_select.presenter.BlurSelectPresenter
 
 class BlurSelect {

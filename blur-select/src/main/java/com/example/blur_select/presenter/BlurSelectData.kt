@@ -3,10 +3,9 @@ package com.example.blur_select.presenter
 import android.content.Context
 import android.view.View
 import android.view.ViewGroup
-import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.ImageView
 import androidx.cardview.widget.CardView
-import com.example.blur_select.extansions.dp
+import com.example.blur_select.config.BlurConfig
 import java.lang.ref.WeakReference
 
 class BlurSelectData(context: Context, selectView: View, rootView: ViewGroup, viewForCard: View) {

@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.blur.databinding.ActivityMainBinding
 import com.example.blur_select.BlurSelect
-import com.example.blur_select.presenter.BlurConfig
+import com.example.blur_select.config.BlurConfig
 import com.example.extansions.dp
 import com.example.extansions.setMarginTop
 import kotlinx.android.synthetic.main.activity_main.*

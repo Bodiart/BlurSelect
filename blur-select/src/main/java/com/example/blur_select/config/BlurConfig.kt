@@ -1,4 +1,4 @@
-package com.example.blur_select.presenter
+package com.example.blur_select.config
 
 import android.graphics.Color
 import android.view.ViewGroup
