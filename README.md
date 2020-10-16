@@ -1,7 +1,7 @@
 # BlurSelect - is a library for selecting view and blur all background
 ![](blur_select.gif)
 
-#Setup
+# Setup
 ## 1) App level ```build.gradle```
 ```
 dependencies {
@@ -17,7 +17,7 @@ class App: Application() {
     }
 }
 ```
-#Usage
+# Usage
 Just call 
 ```
 BlurSelect.selectView(context, selectView, viewForCard, config)
