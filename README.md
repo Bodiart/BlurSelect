@@ -1,4 +1,5 @@
 # BlurSelect - is a library for selecting view and blur all background
+
 ![](blur_select.gif)
 
 # Setup
@@ -68,16 +69,20 @@ Where:
  ```
  elevationFrom = CardView.cardElevation
  ```
+ 
  ![](with_shadow_config.gif)
  
  ## 2) BlurConfig.withRadiusConfig(radiusFrom, radiusTo)
  - radiusFrom - start animation with this radius
  - radiusTo - end animation with this radius
+ 
  ![](with_radius_config.gif)
 
  ## 3) BlurConfig.onlyScaleUpConfig(scaleUpTo)
  - scaleUpTo - end scale up animation with this scale (t can be lesser than 1)
+ 
  ![](only_scale_up_onfig.gif)
  
  ## 4) BlurConfig.withShadowAndRadiusConfig(elevationFrom, elevationTo, radiusFrom, radiusTo)
+ 
  ![](with_shadow_and_radius_config.gif)
