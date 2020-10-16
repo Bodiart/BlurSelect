@@ -69,10 +69,12 @@ Where:
  elevationFrom = CardView.cardElevation
  ```
  ![](with_shadow_config.gif)
+ 
+ ## 2) BlurConfig.withRadiusConfig(radiusFrom, radiusTo)
+ - radiusFrom - start animation with this radius
+ - radiusTo - end animation with this radius
+ ![](with_radius_config.gif)
 
- ## 2) BlurConfig.onlyScaleUpConfig(scaleUpTo)
- - scaleUpTo - end scale up animation with this scale
- 
- It can be lesser than 1
- 
+ ## 3) BlurConfig.onlyScaleUpConfig(scaleUpTo)
+ - scaleUpTo - end scale up animation with this scale (t can be lesser than 1)
  ![](only_scale_up_onfig.gif)
