@@ -10,6 +10,8 @@ dependencies {
 ```
 ## 2) Application class
 ```
+package com.example
+
 class App: Application() {
     override fun onCreate() {
         super.onCreate()
