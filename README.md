@@ -86,3 +86,7 @@ Where:
  ## 4) BlurConfig.withShadowAndRadiusConfig(elevationFrom, elevationTo, radiusFrom, radiusTo)
  
  ![](with_shadow_and_radius_config.gif)
+
+ ## 5) BlurConfig.onlyScaleUpWithShadowConfig(scaleUpTo, elevationFrom, elevationTo)
+ 
+ ![](only_scale_up_with_shadow_config.gif)
