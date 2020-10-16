@@ -78,3 +78,6 @@ Where:
  ## 3) BlurConfig.onlyScaleUpConfig(scaleUpTo)
  - scaleUpTo - end scale up animation with this scale (t can be lesser than 1)
  ![](only_scale_up_onfig.gif)
+ 
+ ## 4) BlurConfig.withShadowAndRadiusConfig(elevationFrom, elevationTo, radiusFrom, radiusTo)
+ ![](with_shadow_and_radius_config.gif)
