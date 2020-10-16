@@ -60,7 +60,7 @@ Where:
  
  # Prepared configs
  
- ### 1) BlurConfigs.withShadowConfig(elevationFrom, elevationTo)
+ ```1) BlurConfigs.withShadowConfig(elevationFrom, elevationTo)```
  - elevationFrom - start shadow animation with this elevation
  - elevationTo - end shadow animation with this elevation
  
@@ -72,21 +72,21 @@ Where:
  
  ![](with_shadow_config.gif)
  
- ### 2) BlurConfig.withRadiusConfig(radiusFrom, radiusTo)
+ ```2) BlurConfig.withRadiusConfig(radiusFrom, radiusTo)```
  - radiusFrom - start animation with this radius
  - radiusTo - end animation with this radius
  
  ![](with_radius_config.gif)
 
- ### 3) BlurConfig.onlyScaleUpConfig(scaleUpTo)
+ ```3) BlurConfig.onlyScaleUpConfig(scaleUpTo)```
  - scaleUpTo - end scale up animation with this scale (t can be lesser than 1)
  
  ![](only_scale_up_onfig.gif)
  
- ### 4) BlurConfig.withShadowAndRadiusConfig(elevationFrom, elevationTo, radiusFrom, radiusTo)
+ ```4) BlurConfig.withShadowAndRadiusConfig(elevationFrom, elevationTo, radiusFrom, radiusTo)```
  
  ![](with_shadow_and_radius_config.gif)
 
- ### 5) BlurConfig.onlyScaleUpWithShadowConfig(scaleUpTo, elevationFrom, elevationTo)
+ ```5) BlurConfig.onlyScaleUpWithShadowConfig(scaleUpTo, elevationFrom, elevationTo)```
  
  ![](only_scale_up_with_shadow_config.gif)
