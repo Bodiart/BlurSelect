@@ -42,8 +42,8 @@ Where:
  1) Duplicate select view
   - this step is needed for making select view on the top of screen. After original select view is duplicated - runs step 3)
  2) Animate duplicate of select view
-  2.1) scale down. After scale down runs step 4)
-  2.2) scale up
+  - scale down. After scale down runs step 4)
+  - scale up
  3) Blur background and animate it
  4) Show card and animate it
  
@@ -69,3 +69,10 @@ Where:
  elevationFrom = CardView.cardElevation
  ```
  ![](with_shadow_config.gif)
+
+ ## 2) BlurConfig.onlyScaleUpConfig(scaleUpTo)
+ - scaleUpTo - end scale up animation with this scale
+ 
+ It can be lesser than 1
+ 
+ ![](only_scale_up_onfig.gif)
