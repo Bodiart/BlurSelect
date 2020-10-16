@@ -9,6 +9,7 @@ import android.renderscript.Allocation
 import android.renderscript.Element
 import android.renderscript.RenderScript
 import android.renderscript.ScriptIntrinsicBlur
+import com.example.blur_select.select.extansions.testLog
 
 
 class Blur {
@@ -49,11 +50,7 @@ class Blur {
     }
 
     private fun getBitmapForView(src: View): Bitmap {
-        val bitmap = Bitmap.createBitmap(
-            src.getWidth(),
-            src.getHeight(),
-            Bitmap.Config.ARGB_8888
-        )
+        val bitmap = Bitmap.createBitmap(src.width, src.height, Bitmap.Config.ARGB_8888)
         val canvas = Canvas(bitmap)
         src.draw(canvas)
         return bitmap
@@ -75,7 +72,7 @@ class Blur {
 
         fun getInstance(): Blur {
             if (instance == null) {
-                throw RuntimeException("Blur not initialized!")
+                throw RuntimeException("Blur not initialized! Call Blur.init() in onCreate() on Application class")
             }
             return instance!!
         }

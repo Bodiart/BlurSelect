@@ -23,7 +23,6 @@ class MainActivity : AppCompatActivity() {
     private fun initListView() {
         adapter = Adapter(this, towns)
         listView.adapter = adapter!!
-
         val viewForCard = layoutInflater.inflate(R.layout.el_card, null, false)
 
         listView.setOnItemClickListener { _, view, position, _ ->
