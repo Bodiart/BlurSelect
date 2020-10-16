@@ -3,11 +3,9 @@ package com.example.blur
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import androidx.cardview.widget.CardView
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.blur_select.BlurSelect
 import com.example.blur_select.config.BlurConfigs
+import com.example.extansions.dp
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -29,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         val viewForCard = layoutInflater.inflate(R.layout.el_card, null, false)
 
         listView.setOnItemClickListener { _, view, position, _ ->
-            createBlurSelect(view.findViewById(R.id.list_item_card), viewForCard, position)
+            createBlurSelect(view.findViewById(R.id.image), viewForCard, position)
         }
 
         adapter?.notifyDataSetChanged()
@@ -37,6 +35,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun createBlurSelect(selectView: View, viewForCard: View, position: Int) {
         val config = BlurConfigs.onlyScaleUpConfig(1.03f)
+//        config.selectViewCardRadius = 12f.dp
         BlurSelect.selectView(this, selectView, viewForCard, config = config).apply {
             addCardListener(R.id.edit) {
                 BlurSelect.discard()
