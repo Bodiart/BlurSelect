@@ -2,7 +2,7 @@ package com.example
 
 import android.app.Application
 import android.content.Context
-import io.alterac.blurkit.BlurKit
+import com.example.blur_select.BlurSelect
 
 class App: Application() {
 
@@ -10,7 +10,7 @@ class App: Application() {
         super.onCreate()
         context = this
 
-        BlurKit.init(this)
+        BlurSelect.init(this)
     }
 
     companion object {

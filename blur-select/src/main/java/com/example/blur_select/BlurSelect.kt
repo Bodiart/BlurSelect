@@ -4,11 +4,17 @@ import android.content.Context
 import android.view.View
 import com.example.blur_select.config.BlurConfig
 import com.example.blur_select.presenter.BlurSelectPresenter
+import io.alterac.blurkit.BlurKit
 
 class BlurSelect {
     companion object {
 
         private var blurSelectPresenter: BlurSelectPresenter? = null
+
+
+        fun init(context: Context) {
+            BlurKit.init(context)
+        }
 
         fun selectView(
             context: Context,

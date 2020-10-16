@@ -42,9 +42,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation "com.google.android.material:material:1.2.0"
 
-    //Singleton artifact
-    implementation "io.coil-kt:coil:0.9.5"
-    implementation 'io.alterac.blurkit:blurkit:1.1.0'
     implementation project(':blur-select')
 
 }
