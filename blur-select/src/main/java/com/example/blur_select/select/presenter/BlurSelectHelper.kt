@@ -33,7 +33,11 @@ class BlurSelectHelper(private val data: BlurSelectData) {
 
     fun getSelectViewBitmap(): Bitmap? {
         data.selectViewRef.get() ?: return null
-        return data.selectViewRef.get()!!.drawToBitmap()
+        return try {
+            data.selectViewRef.get()!!.drawToBitmap()
+        } catch (ex: Throwable) {
+            null
+        }
     }
 
     /**
@@ -86,7 +90,8 @@ class BlurSelectHelper(private val data: BlurSelectData) {
         val cardStartToStartOfViewMargin =
             (originalXPosition + (selectViewWidth - selectViewWidthScaled)).toInt() + data.config.cardStartEndAdditionMargin
         // end of card to end of screen
-        val cardEndToEndOfScreenMargin = screenWidth - cardWidth - 16.dp - data.config.cardStartEndAdditionMargin
+        val cardEndToEndOfScreenMargin =
+            screenWidth - cardWidth - 16.dp - data.config.cardStartEndAdditionMargin
         // start of card to start of screen
         val cardStartToStartOfScreenMargin = 16.dp + data.config.cardStartEndAdditionMargin
 

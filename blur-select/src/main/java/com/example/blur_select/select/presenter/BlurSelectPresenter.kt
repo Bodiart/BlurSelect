@@ -135,7 +135,11 @@ class BlurSelectPresenter(context: Context, selectView: View, viewForCard: View)
         val selectView = getSelectView() ?: return
 
         // get select view bitmap
-        val selectViewBitmap = helper.getSelectViewBitmap() ?: return
+        val selectViewBitmap = helper.getSelectViewBitmap()
+        if (selectViewBitmap == null) {
+            discard()
+            return
+        }
         // create select view duplicate image view
         data.selectViewDuplicateImageView = ImageView(context)
         data.selectViewDuplicateImageView!!.setImageBitmap(selectViewBitmap)
