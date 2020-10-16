@@ -66,14 +66,20 @@ class BlurConfig {
     var selectViewCardDuplicateCardParams = true // duplicate select view card view params
     var selectViewCardRadius = 0f // select view duplicate card corner radius (DON'T WORK IF selectViewCardDuplicateCardParams == true)
     var selectViewCardBackgroundColor = Color.WHITE // select view duplicate card bg color (DON'T WORK IF selectViewCardDuplicateCardParams == true)
-    var selectViewCardShadowAnimEnabled = false
+    var selectViewCardShadowAnimEnabled = false // enable card shadow anim
+    var selectViewCardRadiusAnimEnabled = false // enable card radius anim
     // anim durations
     var selectViewCardAnimDurationShadowOn  = 0L // shadow on WARNING!!! : DON'T USE DURATION BIGGER THAN selectViewAnimDurationScaleUp
     var selectViewCardAnimDurationShadowOff = 0L // shadow on WARNING!!! : DON'T USE DURATION BIGGER THAN selectViewAnimDurationScaleOff
+    var selectViewCardAnimDurationRadiusOn  = 0L // shadow on WARNING!!! : DON'T USE DURATION BIGGER THAN selectViewAnimDurationScaleUp
+    var selectViewCardAnimDurationRadiusOff = 0L // shadow on WARNING!!! : DON'T USE DURATION BIGGER THAN selectViewAnimDurationScaleOff
     // anim values
     var selectViewCardAnimValueShadowOnFrom = 0f // shadow on from
-    var selectViewCardAnimValueShadowOnTo   = 0f  // shadow on to
-    var selectViewCardAnimValueShadowOffTo  = 0f  // shadow off to
+    var selectViewCardAnimValueShadowOnTo   = 0f // shadow on to
+    var selectViewCardAnimValueShadowOffTo  = 0f // shadow off to
+    var selectViewCardAnimValueRadiusOnFrom = 0f  // radius on from
+    var selectViewCardAnimValueRadiusOnTo   = 0f  // radius on to
+    var selectViewCardAnimValueRadiusOffTo  = 0f  // radius off to
     /**
      * Select view END
      * */

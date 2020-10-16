@@ -35,10 +35,7 @@ class BlurSelectPresenter(context: Context, selectView: View, viewForCard: View)
     }
 
     internal fun discard() {
-        // scale down select view duplicate
-        anim.selectViewDuplicateScaleOff()
-        // shadow off select view duplicate
-        anim.selectViewDuplicateOnShadowOff()
+        anim.selectViewDuplicateOff()
         // hide card with anim
         anim.hideCard {
             // remove card from root

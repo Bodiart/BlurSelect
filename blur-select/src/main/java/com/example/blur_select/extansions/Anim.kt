@@ -236,6 +236,59 @@ fun CardView.blurSelectAnimateShadow(
  * Shadow end
  * */
 
+
+/**
+ * Card Radius start
+ * */
+fun CardView.blurSelectAnimateRadius(
+    fromValue: Float,
+    toValue: Float,
+    duration: Long,
+    interpolator: TimeInterpolator? = null,
+    updateCallback: ((value: Float) -> Unit)? = null,
+    endCallback: (() -> Unit)? = null,
+    startCallback: (() -> Unit)? = null
+): ValueAnimator? {
+    val animator = ValueAnimator.ofFloat(fromValue, toValue).apply {
+        // duration
+        setDuration(duration)
+        // interpolator
+        if (interpolator != null)
+            setInterpolator(interpolator)
+        // update listener
+        addUpdateListener {  valueAnimator ->
+            val value = valueAnimator.animatedValue as Float
+            this@blurSelectAnimateRadius.radius = value
+            updateCallback?.invoke(value)
+        }
+        addListener(
+            onStart = {
+                startCallback?.invoke()
+            },
+            onEnd = {
+                endCallback?.invoke()
+            }
+        )
+    }
+    animator.start()
+
+    return animator
+}
+
+fun CardView.blurSelectAnimateRadius(
+    toValue: Float,
+    duration: Long,
+    interpolator: TimeInterpolator? = null,
+    updateCallback: ((value: Float) -> Unit)? = null,
+    endCallback: (() -> Unit)? = null,
+    startCallback: (() -> Unit)? = null
+): ValueAnimator? {
+    return blurSelectAnimateRadius(this.radius, toValue, duration, interpolator, updateCallback, endCallback, startCallback)
+}
+/**
+ * Card Radius END
+ * */
+
 fun Animation.blurSelectSetListener(
     startCallback: (() -> Unit)? = null,
     repeatCallback: (() -> Unit)? = null,

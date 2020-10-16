@@ -4,6 +4,7 @@ import android.animation.ValueAnimator
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import com.example.blur_select.extansions.blurSelectAnimateAlpha
+import com.example.blur_select.extansions.blurSelectAnimateRadius
 import com.example.blur_select.extansions.blurSelectAnimateScale
 import com.example.blur_select.extansions.blurSelectAnimateShadow
 
@@ -11,6 +12,7 @@ class BlurSelectAnim(private val data: BlurSelectData) {
     private var blurredBgImageViewAnimator: ValueAnimator? = null
     private var selectViewDuplicateAnimator: ValueAnimator? = null
     private var selectViewDuplicateShadowAnimator: ValueAnimator? = null
+    private var selectViewDuplicateRadiusAnimator: ValueAnimator? = null
     private var cardScaleAnimator: ValueAnimator? = null
     private var cardAlphaAnimator: ValueAnimator? = null
 
@@ -104,8 +106,15 @@ class BlurSelectAnim(private val data: BlurSelectData) {
         selectViewDuplicateOnScaleDown( endCallback = {
             duplicateScaleDownEnd()
             selectViewDuplicateOnShadowOn()
+            selectViewDuplicateOnRadiusOn()
             selectViewDuplicateOnScaleUp(endCallback)
         })
+    }
+
+    fun selectViewDuplicateOff() {
+        selectViewDuplicateScaleOff()
+        selectViewDuplicateOffShadowOff()
+        selectViewDuplicateOffRadiusOff()
     }
 
     private fun selectViewDuplicateOnScaleDown(endCallback: (() -> Unit)) {
@@ -154,7 +163,7 @@ class BlurSelectAnim(private val data: BlurSelectData) {
         )
     }
 
-    fun selectViewDuplicateOnShadowOff() {
+    private fun selectViewDuplicateOffShadowOff() {
         if (!data.config.selectViewCardShadowAnimEnabled)
             return
         selectViewDuplicateShadowAnimator?.cancel()
@@ -162,6 +171,31 @@ class BlurSelectAnim(private val data: BlurSelectData) {
         selectViewDuplicateShadowAnimator = data.selectViewDuplicateCardView!!.blurSelectAnimateShadow(
             data.config.selectViewCardAnimValueShadowOffTo,
             data.config.selectViewCardAnimDurationShadowOff,
+            interpolator = DecelerateInterpolator()
+        )
+    }
+
+    private fun selectViewDuplicateOnRadiusOn() {
+        if (!data.config.selectViewCardRadiusAnimEnabled)
+            return
+        selectViewDuplicateRadiusAnimator?.cancel()
+        data.selectViewDuplicateCardView ?: return
+        selectViewDuplicateRadiusAnimator = data.selectViewDuplicateCardView!!.blurSelectAnimateRadius(
+            data.config.selectViewCardAnimValueRadiusOnFrom,
+            data.config.selectViewCardAnimValueRadiusOnTo,
+            data.config.selectViewCardAnimDurationRadiusOn,
+            interpolator = DecelerateInterpolator()
+        )
+    }
+
+    private fun selectViewDuplicateOffRadiusOff() {
+        if (!data.config.selectViewCardRadiusAnimEnabled)
+            return
+        selectViewDuplicateRadiusAnimator?.cancel()
+        data.selectViewDuplicateCardView ?: return
+        selectViewDuplicateRadiusAnimator = data.selectViewDuplicateCardView!!.blurSelectAnimateRadius(
+            data.config.selectViewCardAnimValueRadiusOffTo,
+            data.config.selectViewCardAnimDurationRadiusOff,
             interpolator = DecelerateInterpolator()
         )
     }
