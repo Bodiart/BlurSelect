@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Customize your theme here. -->
@@ -6,6 +6,8 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowBackground">#C5C5C5</item>
+        <item name="android:statusBarColor">#fff</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
     </style>
 
 </resources>

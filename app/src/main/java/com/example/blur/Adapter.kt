@@ -1,14 +1,24 @@
 package com.example.blur
 
-import com.chad.library.adapter.base.BaseQuickAdapter
-import com.chad.library.adapter.base.viewholder.BaseViewHolder
+import android.content.Context
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.ImageView
+import com.example.extansions.dp
+import com.example.extansions.setMargins
 import kotlin.random.Random
 
-class Adapter(arr: ArrayList<String>): BaseQuickAdapter<String, BaseViewHolder>(R.layout.list_item, arr) {
+class Adapter(context: Context, private val arr: ArrayList<Int>): ArrayAdapter<Int>(context, R.layout.list_item, arr) {
 
-    override fun convert(holder: BaseViewHolder, item: String) {
-        val random = Random.nextInt(7)
-        val image = when (random) {
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+        val item = arr[position]
+
+        val view = convertView
+            ?: LayoutInflater.from(context).inflate(R.layout.list_item, null, false)
+
+        val image = when (item) {
             1 -> R.drawable._1
             2 -> R.drawable._2
             3 -> R.drawable._3
@@ -18,6 +28,9 @@ class Adapter(arr: ArrayList<String>): BaseQuickAdapter<String, BaseViewHolder>(
             7 -> R.drawable._7
             else -> R.drawable._1
         }
-        holder.setImageResource(R.id.image, image)
+
+        view.findViewById<ImageView>(R.id.image)?.setImageResource(image)
+
+        return view
     }
 }
