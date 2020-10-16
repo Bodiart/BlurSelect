@@ -37,3 +37,35 @@ Where:
  - selectView - view what you want to focus
  - viewForCard - layout which you want to show after select (you can specify size as you want, or it will be calculated automatically)
  - config - ```BlurConfig``` object for determining animation durations and values, viewForCard size and other (there are some prepared configs for different animations)
+ 
+ # Algorithm of logic and animations
+ 1) Duplicate select view
+  - this step is needed for making select view on the top of screen. After original select view is duplicated - runs step 3)
+ 2) Animate duplicate of select view
+  2.1) scale down. After scale down runs step 4)
+  2.2) scale up
+ 3) Blur background and animate it
+ 4) Show card and animate it
+ 
+ # Concept of animations
+ 
+ The main animations is:
+ 1) scale down
+ 2) scale up
+ 
+ Scale down can be turned off (watch Config properties #select view)
+ 
+ When starting scale up, also can be run shadow and radius animation (watch Config properties #select view)
+ 
+ # Prepared configs
+ 
+ ## 1) BlurConfigs.withShadowConfig(elevationFrom, elevationTo)
+ - elevationFrom - start shadow animation with this elevation
+ - elevationTo - end shadow animation with this elevation
+ 
+ Enables shadow animation.
+ If you are using CardView as select view and you already have elevation, just specify 
+ ```
+ elevationFrom = CardView.cardElevation
+ ```
+ ![](with_shadow_config.gif)
