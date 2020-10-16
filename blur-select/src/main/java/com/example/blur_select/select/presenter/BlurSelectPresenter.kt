@@ -1,4 +1,4 @@
-package com.example.blur_select.presenter
+package com.example.blur_select.select.presenter
 
 import android.content.Context
 import android.graphics.Color
@@ -6,9 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.cardview.widget.CardView
-import com.example.blur_select.Utils.Companion.getLayoutParams
-import com.example.blur_select.Utils.Companion.getLayoutParamsMatchParent
-import com.example.blur_select.Utils.Companion.getViewSizes
+import com.example.blur_select.select.Utils.Companion.getLayoutParams
+import com.example.blur_select.select.Utils.Companion.getLayoutParamsMatchParent
+import com.example.blur_select.select.Utils.Companion.getViewSizes
 import com.example.extansions.setMargins
 
 class BlurSelectPresenter(context: Context, selectView: View, viewForCard: View) {

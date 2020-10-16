@@ -1,4 +1,4 @@
-package com.example.blur_select.extansions
+package com.example.blur_select.select.extansions
 
 import android.animation.TimeInterpolator
 import android.animation.ValueAnimator
@@ -6,7 +6,6 @@ import android.view.View
 import android.view.animation.Animation
 import androidx.cardview.widget.CardView
 import androidx.core.animation.addListener
-import androidx.lifecycle.MutableLiveData
 
 
 ///**

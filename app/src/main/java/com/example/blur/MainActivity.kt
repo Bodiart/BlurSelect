@@ -3,8 +3,8 @@ package com.example.blur
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import com.example.blur_select.BlurSelect
-import com.example.blur_select.config.BlurConfigs
+import com.example.blur_select.select.BlurSelect
+import com.example.blur_select.select.config.BlurConfigs
 import com.example.extansions.dp
 import kotlinx.android.synthetic.main.activity_main.*
 

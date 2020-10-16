@@ -1,12 +1,12 @@
-package com.example.blur_select.presenter
+package com.example.blur_select.select.presenter
 
 import android.animation.ValueAnimator
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
-import com.example.blur_select.extansions.blurSelectAnimateAlpha
-import com.example.blur_select.extansions.blurSelectAnimateRadius
-import com.example.blur_select.extansions.blurSelectAnimateScale
-import com.example.blur_select.extansions.blurSelectAnimateShadow
+import com.example.blur_select.select.extansions.blurSelectAnimateAlpha
+import com.example.blur_select.select.extansions.blurSelectAnimateRadius
+import com.example.blur_select.select.extansions.blurSelectAnimateScale
+import com.example.blur_select.select.extansions.blurSelectAnimateShadow
 
 class BlurSelectAnim(private val data: BlurSelectData) {
     private var blurredBgImageViewAnimator: ValueAnimator? = null

@@ -1,6 +1,4 @@
-package com.example.blur_select.config
-
-import com.example.blur_select.extansions.dp
+package com.example.blur_select.select.config
 
 /**
  * Class for getting configured blur config

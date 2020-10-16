@@ -1,8 +1,7 @@
-package com.example.blur_select.config
+package com.example.blur_select.select.config
 
 import android.graphics.Color
-import android.view.ViewGroup
-import com.example.blur_select.extansions.dp
+import com.example.blur_select.select.extansions.dp
 
 class BlurConfig {
 
@@ -10,7 +9,7 @@ class BlurConfig {
      * Blurred background START
      * */
     // blur values
-    var blurredBgBlurRadius = 14
+    var blurredBgBlurRadius = 14f
     var blurredBgBlurDownScaleFactor = 0.2f // bg bitmap downscale (for better performance)
     // anim durations
     var blurredBgAnimDurationShow = 200L // show

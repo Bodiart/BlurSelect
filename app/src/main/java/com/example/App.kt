@@ -2,7 +2,7 @@ package com.example
 
 import android.app.Application
 import android.content.Context
-import com.example.blur_select.BlurSelect
+import com.example.blur_select.select.BlurSelect
 
 class App: Application() {
 

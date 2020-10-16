@@ -1,11 +1,11 @@
-package com.example.blur_select.presenter
+package com.example.blur_select.select.presenter
 
 import android.content.Context
 import android.graphics.Bitmap
 import androidx.core.view.drawToBitmap
-import com.example.blur_select.Utils
-import com.example.blur_select.extansions.dp
-import io.alterac.blurkit.BlurKit
+import com.example.blur_select.blur.Blur
+import com.example.blur_select.select.Utils
+import com.example.blur_select.select.extansions.dp
 
 class BlurSelectHelper(private val data: BlurSelectData) {
 
@@ -15,8 +15,8 @@ class BlurSelectHelper(private val data: BlurSelectData) {
 
     fun getBlurredBackgroundBitmap(): Bitmap? {
         data.rootViewRef.get() ?: return null
-        return BlurKit.getInstance().fastBlur(
-            data.rootViewRef.get(),
+        return Blur.getInstance().fastBlur(
+            data.rootViewRef.get()!!,
             data.config.blurredBgBlurRadius,
             data.config.blurredBgBlurDownScaleFactor
         )
