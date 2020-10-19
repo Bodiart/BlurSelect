@@ -92,6 +92,6 @@ Where:
  
  ![](only_scale_up_with_shadow_config.gif)
  
- ```6) BlurConfig.onlyScaleUpWithRadiusConfig(scaleUpTo, radiusFrom, radiusTo)
+ ```6) BlurConfig.onlyScaleUpWithRadiusConfig(scaleUpTo, radiusFrom, radiusTo)```
  
  ![](only_scale_up_with_radius_config.gif)
