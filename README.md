@@ -1,4 +1,4 @@
-# BlurSelect - is a library for selecting view and blur all background
+# BlurSelect - is a library for selecting view and blur background
 
 ![](blur_select.gif)
 
@@ -39,6 +39,12 @@ Where:
  - viewForCard - layout which you want to show after select (you can specify size as you want, or it will be calculated automatically)
  - config - ```BlurConfig``` object for determining animation durations and values, viewForCard size and other (there are some prepared configs for different animations)
  
+To add viewForCard listeners:
+```
+val blurSelect = BlurSelect.selectView(context, selectView, viewForCard, config)
+blurSelect.addCardListener(viewId, listener)
+```
+ 
  # Algorithm of logic and animations
  1) Duplicate select view
   - this step is needed for making select view on the top of screen. After original select view is duplicated - runs step 3)
@@ -65,7 +71,7 @@ Where:
  - elevationTo - end shadow animation with this elevation
  
  Enables shadow animation.
- If you are using CardView as select view and you already have elevation, just specify elevationFrom
+ If you are using CardView as select view and you already have elevation, just specify
  ```
  elevationFrom = CardView.cardElevation
  ```
@@ -75,7 +81,11 @@ Where:
  ```2) BlurConfig.withRadiusConfig(radiusFrom, radiusTo)```
  - radiusFrom - start animation with this radius
  - radiusTo - end animation with this radius
- If you are using CardView as select view and you already have corner radius, just specify radiusFrom
+ 
+ If you are using CardView as select view and you already have corner radius, just specify
+ ```
+ radiusFrom = CardView.radius
+ ```
  
  ![](with_radius_config.gif)
 
