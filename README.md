@@ -93,14 +93,14 @@ blurSelect.addCardListener(viewId, listener)
  
  # Config properties
  
- ## Blurred background
+ ### Blurred background
   - ```blurredBgBlurRadius``` - radius of background blur factor
   - ```blurredBgBlurDownScaleFactor``` - background view bitmap downscale factor
- ## Card (view that appears when selectView focused)
+ ### Card (view that appears when selectView focused)
   - ```cardAutoCalculateInnerViewSize``` - auto calculate card width and height (if you want to specify size manually - set it to false)
   - ```cardTopAdditionMargin``` - additional card vertical margin
   - ```cardStartEndAdditionMargin``` - additional card horizontal margin
- ## SelectView (view for focus)
+ ### SelectView (view for focus)
   - ```selectViewCardDuplicateCardParams``` - duplicate card view params, such as elevation, background color and radius. If selectView is CardView - it can duplicate params. Or you can set it to false and specify radius, background color and elevation (by setting shadow animation) manually
   - ```selectViewCardShadowAnimEnabled``` - enable shadow (elevation) animation. Specify ```selectViewCardAnimDurationShadowOn```, ```selectViewCardAnimDurationShadowOff```, ```selectViewCardAnimValueShadowOnFrom```, ```selectViewCardAnimValueShadowOnTo```, ```selectViewCardAnimValueShadowOffTo```
   - ```selectViewCardRadiusAnimEnabled``` - enable radius (card corner radius) animation. Specify ```selectViewCardAnimDurationRadiusOn```, ```selectViewCardAnimDurationRadiusOff```, ```selectViewCardAnimValueRadiusOnFrom```, ```selectViewCardAnimValueRadiusOnTo```, ```selectViewCardAnimValueRadiusOffTo```
