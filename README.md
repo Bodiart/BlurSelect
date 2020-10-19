@@ -65,7 +65,7 @@ Where:
  - elevationTo - end shadow animation with this elevation
  
  Enables shadow animation.
- If you are using CardView as select view and you already have elevation, just specify 
+ If you are using CardView as select view and you already have elevation, just specify elevationFrom
  ```
  elevationFrom = CardView.cardElevation
  ```
@@ -75,6 +75,7 @@ Where:
  ```2) BlurConfig.withRadiusConfig(radiusFrom, radiusTo)```
  - radiusFrom - start animation with this radius
  - radiusTo - end animation with this radius
+ If you are using CardView as select view and you already have corner radius, just specify radiusFrom
  
  ![](with_radius_config.gif)
 
@@ -90,3 +91,7 @@ Where:
  ```5) BlurConfig.onlyScaleUpWithShadowConfig(scaleUpTo, elevationFrom, elevationTo)```
  
  ![](only_scale_up_with_shadow_config.gif)
+ 
+ ```6) BlurConfig.onlyScaleUpWithRadiusConfig(scaleUpTo, radiusFrom, radiusTo)
+ 
+ ![](only_scale_up_with_radius_config.gif)
