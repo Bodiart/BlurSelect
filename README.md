@@ -6,7 +6,7 @@
 ## 1) App level ```build.gradle```
 ```
 dependencies {
-    implementation 'com.github.Bodiart:BlurSelect:1.4.0'
+    implementation 'com.github.Bodiart:BlurSelect:1.4.1'
 }
 ```
 ## 2) Application class
