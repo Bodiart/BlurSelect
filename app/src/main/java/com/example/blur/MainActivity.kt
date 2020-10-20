@@ -36,8 +36,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun createBlurSelect(selectView: View, viewForCard: View, position: Int) {
-        val config = BlurConfigs.onlyScaleUpWithShadowConfig(elevationFrom = 2f.dp, elevationTo = 6f.dp, scaleUpTo = 1.03f)
-        BlurSelect.selectView(this, selectView, viewForCard, config = config).apply {
+//        val config = BlurConfigs.onlyScaleUpWithShadowConfig(elevationFrom = 2f.dp, elevationTo = 6f.dp, scaleUpTo = 1.03f)
+        val config = BlurConfigs.onlyScaleUpWithShadowAndRadiusConfig(radiusFrom = 5f.dp, radiusTo = 15f.dp, scaleUpTo = 1.03f, elevationFrom = 2f.dp, elevationTo = 26f.dp)
+        BlurSelect.selectView(selectView, viewForCard, config = config)?.apply {
             addCardListener(R.id.edit) {
                 BlurSelect.discard()
             }
