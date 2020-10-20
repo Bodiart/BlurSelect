@@ -1,4 +1,4 @@
-package com.example.extansions
+package com.example.blur_select.extansions
 
 import android.view.View
 import android.view.ViewGroup
@@ -11,77 +11,73 @@ import androidx.core.view.marginRight
 import androidx.core.view.marginTop
 
 
-fun View.setGone(isVisible: Boolean) {
+fun View.blurSelectExtSetGone(isVisible: Boolean) {
     this.visibility = if (isVisible) View.VISIBLE else View.GONE
 }
 
-fun View.setVisible(isVisible: Boolean) {
+fun View.blurSelectExtSetVisible(isVisible: Boolean) {
     this.visibility = if (isVisible) View.VISIBLE else View.INVISIBLE
 }
 
-fun Boolean?.getVisibility(): Int {
-    return if (this == true) View.VISIBLE else View.INVISIBLE
-}
-
-fun View.setMarginStart(marginStart: Int) {
+fun View.blurSelectExtSetMarginStart(marginStart: Int) {
     val menuLayoutParams = this.layoutParams as ViewGroup.MarginLayoutParams
     menuLayoutParams.setMargins(marginStart, marginTop, marginRight, marginBottom)
     this.layoutParams = menuLayoutParams
 }
 
-fun View.setMarginTop(marginTop: Int) {
+fun View.blurSelectExtSetMarginTop(marginTop: Int) {
     val menuLayoutParams = this.layoutParams as ViewGroup.MarginLayoutParams
     menuLayoutParams.setMargins(marginLeft, marginTop, marginRight, marginBottom)
     this.layoutParams = menuLayoutParams
 }
 
-fun View.setMarginEnd(marginEnd: Int) {
+fun View.blurSelectExtSetMarginEnd(marginEnd: Int) {
     val menuLayoutParams = this.layoutParams as ViewGroup.MarginLayoutParams
     menuLayoutParams.setMargins(marginLeft, marginTop, marginEnd, marginBottom)
     this.layoutParams = menuLayoutParams
 }
 
-fun View.setMarginBot(marginBot: Int) {
+fun View.blurSelectExtSetMarginBot(marginBot: Int) {
     val menuLayoutParams = this.layoutParams as ViewGroup.MarginLayoutParams
     menuLayoutParams.setMargins(marginLeft, marginTop, marginRight, marginBot)
     this.layoutParams = menuLayoutParams
 }
 
-fun View.setMargins(marginStart: Int, marginTop: Int, marginEnd: Int, marginBot: Int) {
+fun View.blurSelectExtSetMargins(marginStart: Int, marginTop: Int, marginEnd: Int, marginBot: Int) {
     val menuLayoutParams = this.layoutParams as ViewGroup.MarginLayoutParams
     menuLayoutParams.setMargins(marginStart, marginTop, marginEnd, marginBot)
     this.layoutParams = menuLayoutParams
 }
 
-fun View.setPaddingStart(paddingStart: Int) {
+fun View.blurSelectExtSetPaddingStart(paddingStart: Int) {
     this.setPadding(paddingStart, paddingTop, paddingEnd, paddingBottom)
 }
 
-fun View.setPaddingTop(paddingTop: Int) {
+fun View.blurSelectExtSetPaddingTop(paddingTop: Int) {
     this.setPadding(paddingStart, paddingTop, paddingEnd, paddingBottom)
 }
 
-fun View.setPaddingEnd(paddingEnd: Int) {
+fun View.blurSelectExtSetPaddingEnd(paddingEnd: Int) {
     this.setPadding(paddingStart, paddingTop, paddingEnd, paddingBottom)
 }
 
-fun View.setPaddingBot(paddingBottom: Int) {
+fun View.blurSelectExtSetPaddingBot(paddingBottom: Int) {
     this.setPadding(paddingStart, paddingTop, paddingEnd, paddingBottom)
 }
 
-fun View.startAnim(@AnimRes animRes: Int): Animation {
+fun View.blurSelectExtStartAnim(@AnimRes animRes: Int): Animation {
     val anim = AnimationUtils.loadAnimation(this.context, animRes)
     this.startAnimation(anim)
     return anim
 }
 
-fun View.setHeight(newHeight: Int) {
+fun View.blurSelectExtSetHeight(newHeight: Int) {
     val params = this.layoutParams as ViewGroup.LayoutParams
     params.height = newHeight
     this.layoutParams = params
 }
 
-fun View.setWidth(newWidth: Int) {
+fun View.blurSelectExtSetWidth(newWidth: Int) {
     val params = this.layoutParams as ViewGroup.LayoutParams
     params.width = newWidth
     this.layoutParams = params

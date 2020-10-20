@@ -6,9 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ImageView
-import com.example.extansions.dp
-import com.example.extansions.setMargins
-import kotlin.random.Random
 
 class Adapter(context: Context, private val arr: ArrayList<Int>): ArrayAdapter<Int>(context, R.layout.list_item, arr) {
 

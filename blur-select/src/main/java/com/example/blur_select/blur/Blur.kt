@@ -9,7 +9,6 @@ import android.renderscript.Allocation
 import android.renderscript.Element
 import android.renderscript.RenderScript
 import android.renderscript.ScriptIntrinsicBlur
-import com.example.blur_select.select.extansions.testLog
 
 
 class Blur {

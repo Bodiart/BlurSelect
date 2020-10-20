@@ -1,4 +1,4 @@
-package com.example.blur_select.select.extansions
+package com.example.blur_select.extansions
 
 import android.animation.TimeInterpolator
 import android.animation.ValueAnimator
@@ -7,73 +7,6 @@ import android.view.animation.Animation
 import androidx.cardview.widget.CardView
 import androidx.core.animation.addListener
 
-
-///**
-// * MutableLiveData<Float>
-// * */
-//fun MutableLiveData<Float>.animate(
-//    toValue: Float,
-//    duration: Long,
-//    interpolator: TimeInterpolator? = null,
-//    updateCallback: ((value: Float) -> Unit)? = null,
-//    endCallback: (() -> Unit)? = null
-//): ValueAnimator? {
-//    val fromValue = this.value ?: return null
-//
-//    val animator = ValueAnimator.ofFloat(fromValue, toValue).apply {
-//        // duration
-//        setDuration(duration)
-//        // interpolator
-//        if (interpolator != null)
-//            setInterpolator(interpolator)
-//        // update listener
-//        addUpdateListener {  valueAnimator ->
-//            val value = valueAnimator.animatedValue as Float
-//            this@animate.value = value
-//            updateCallback?.invoke(value)
-//        }
-//        addListener(
-//            onEnd = {
-//                endCallback?.invoke()
-//            }
-//        )
-//
-//    }
-//    animator.start()
-//
-//    return animator
-//}
-//
-//fun MutableLiveData<Float>.animate(
-//    fromValue: Float,
-//    toValue: Float,
-//    duration: Long,
-//    interpolator: TimeInterpolator? = null,
-//    updateCallback: ((value: Float) -> Unit)? = null,
-//    endCallback: (() -> Unit)? = null
-//): ValueAnimator? {
-//    val animator = ValueAnimator.ofFloat(fromValue, toValue).apply {
-//        // duration
-//        setDuration(duration)
-//        // interpolator
-//        if (interpolator != null)
-//            setInterpolator(interpolator)
-//        // update listener
-//        addUpdateListener {  valueAnimator ->
-//            val value = valueAnimator.animatedValue as Float
-//            this@animate.value = value
-//            updateCallback?.invoke(value)
-//        }
-//        addListener(
-//            onEnd = {
-//                endCallback?.invoke()
-//            }
-//        )
-//    }
-//    animator.start()
-//
-//    return animator
-//}
 
 /**
  * Alpha START

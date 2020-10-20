@@ -1,7 +1,7 @@
 package com.example.blur_select.select.config
 
 import android.graphics.Color
-import com.example.blur_select.select.extansions.dp
+import com.example.blur_select.extansions.blurSelectExtDp
 
 class BlurConfig {
 
@@ -26,10 +26,10 @@ class BlurConfig {
      * Card START
      * */
     // sizes
-    var cardWidth: Int  = 200.dp // width
-    var cardHeight: Int = 180.dp // height
+    var cardWidth: Int  = 200.blurSelectExtDp // width
+    var cardHeight: Int = 180.blurSelectExtDp // height
     var cardAutoCalculateInnerViewSize: Boolean = true // auto calculate card inner view size
-    var cardCornersRadius = 12.dp.toFloat()
+    var cardCornersRadius = 12.blurSelectExtDp.toFloat()
     var cardTopAdditionMargin: Int = 0 // top addition margin
     var cardStartEndAdditionMargin: Int = 0 // start/end addition margin depends of card position
     // anim durations

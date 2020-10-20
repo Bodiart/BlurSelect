@@ -5,7 +5,6 @@ import android.util.Log
 import android.view.View
 import com.example.blur_select.blur.Blur
 import com.example.blur_select.select.config.BlurConfig
-import com.example.blur_select.select.extansions.log
 import com.example.blur_select.select.presenter.BlurSelectPresenter
 import java.lang.RuntimeException
 import java.lang.ref.WeakReference

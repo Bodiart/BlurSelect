@@ -5,7 +5,7 @@ import android.graphics.Bitmap
 import androidx.core.view.drawToBitmap
 import com.example.blur_select.blur.Blur
 import com.example.blur_select.select.Utils
-import com.example.blur_select.select.extansions.dp
+import com.example.blur_select.extansions.blurSelectExtDp
 
 class BlurSelectHelper(private val data: BlurSelectData) {
 
@@ -54,12 +54,12 @@ class BlurSelectHelper(private val data: BlurSelectData) {
         selectViewHeightScaled: Float
     ): Int {
         context ?: return 0
-        val marginTopDelta = selectViewHeightScaled + 16.dp + data.config.cardTopAdditionMargin
+        val marginTopDelta = selectViewHeightScaled + 16.blurSelectExtDp + data.config.cardTopAdditionMargin
         val cardHeight = data.config.cardHeight
 
         val marginTopForBottomPosition = (originalYPosition + marginTopDelta).toInt()
         val marginTopForTopPosition =
-            originalYPosition - 16.dp - data.config.cardTopAdditionMargin - cardHeight
+            originalYPosition - 16.blurSelectExtDp - data.config.cardTopAdditionMargin - cardHeight
 
         val screenHeight = Utils.getScreenHeightPx(context) ?: return marginTopForBottomPosition
 
@@ -91,9 +91,9 @@ class BlurSelectHelper(private val data: BlurSelectData) {
             (originalXPosition + (selectViewWidth - selectViewWidthScaled)).toInt() + data.config.cardStartEndAdditionMargin
         // end of card to end of screen
         val cardEndToEndOfScreenMargin =
-            screenWidth - cardWidth - 16.dp - data.config.cardStartEndAdditionMargin
+            screenWidth - cardWidth - 16.blurSelectExtDp - data.config.cardStartEndAdditionMargin
         // start of card to start of screen
-        val cardStartToStartOfScreenMargin = 16.dp + data.config.cardStartEndAdditionMargin
+        val cardStartToStartOfScreenMargin = 16.blurSelectExtDp + data.config.cardStartEndAdditionMargin
 
         // select view end X position
         val selectViewScaledEndXPosition = originalXPosition + selectViewWidthScaled
@@ -108,7 +108,7 @@ class BlurSelectHelper(private val data: BlurSelectData) {
             originalXPosition >= 0 && selectViewScaledEndXPosition > screenWidth -> {
                 return when {
                     /** card can be start to start of select view and also fit on screen */
-                    originalXPosition + cardWidth + 16.dp < screenWidth -> { //
+                    originalXPosition + cardWidth + 16.blurSelectExtDp < screenWidth -> { //
                         data.card?.pivotX = 0f // start animation from left side
                         cardStartToStartOfViewMargin
                     }

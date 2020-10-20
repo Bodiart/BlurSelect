@@ -9,7 +9,7 @@ import androidx.cardview.widget.CardView
 import com.example.blur_select.select.Utils.Companion.getLayoutParams
 import com.example.blur_select.select.Utils.Companion.getLayoutParamsMatchParent
 import com.example.blur_select.select.Utils.Companion.getViewSizes
-import com.example.extansions.setMargins
+import com.example.blur_select.extansions.blurSelectExtSetMargins
 
 class BlurSelectPresenter(context: Context, selectView: View, viewForCard: View) {
 
@@ -165,7 +165,7 @@ class BlurSelectPresenter(context: Context, selectView: View, viewForCard: View)
         // setup selected view duplicate margins for actual position
         IntArray(2).let { positions ->
             selectView.getLocationOnScreen(positions)
-            data.selectViewDuplicateCardView!!.setMargins(positions[0], positions[1], 0, 0)
+            data.selectViewDuplicateCardView!!.blurSelectExtSetMargins(positions[0], positions[1], 0, 0)
         }
         // replace original select view with duplicate
         showSelectViewDuplicate()
@@ -270,7 +270,7 @@ class BlurSelectPresenter(context: Context, selectView: View, viewForCard: View)
                 selectViewWidthScaled
             )
 
-            data.card!!.setMargins(marginStart, marginTop, 0, 0)
+            data.card!!.blurSelectExtSetMargins(marginStart, marginTop, 0, 0)
         }
     }
     /**
