@@ -31,17 +31,16 @@ Dont forget to add this class in manifest (like this):
 # Usage
 Just call 
 ```
-BlurSelect.selectView(context, selectView, viewForCard, config)
+BlurSelect.selectView(selectView, viewForCard, config)
 ```
 Where:
- - context - Application/Activity context
  - selectView - view what you want to focus
  - viewForCard - layout which you want to show after select (you can specify size as you want, or it will be calculated automatically)
  - config - ```BlurConfig``` object for determining animation durations and values, viewForCard size and other (there are some prepared configs for different animations)
  
 To add viewForCard listeners:
 ```
-val blurSelect = BlurSelect.selectView(context, selectView, viewForCard, config)
+val blurSelect = BlurSelect.selectView(selectView, viewForCard, config)
 blurSelect.addCardListener(viewId, listener)
 ```
  
@@ -52,7 +51,7 @@ blurSelect.addCardListener(viewId, listener)
  - elevationTo - end shadow animation with this elevation
  
  Enables shadow animation.
- If you are using CardView as select view and you already have elevation, just specify
+ If you are using CardView as selectView and you already have elevation, just specify
  ```
  elevationFrom = CardView.cardElevation
  ```
@@ -63,7 +62,7 @@ blurSelect.addCardListener(viewId, listener)
  - radiusFrom - start animation with this radius
  - radiusTo - end animation with this radius
  
- If you are using CardView as select view and you already have corner radius, just specify
+ If you are using CardView as selectView and you already have corner radius, just specify
  ```
  radiusFrom = CardView.radius
  ```
