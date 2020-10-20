@@ -1,4 +1,4 @@
-# BlurSelect - is a library for selecting view and blur all background
+# BlurSelect - is a library for selecting view and blur background
 
 ![](blur_select.gif)
 
@@ -39,24 +39,11 @@ Where:
  - viewForCard - layout which you want to show after select (you can specify size as you want, or it will be calculated automatically)
  - config - ```BlurConfig``` object for determining animation durations and values, viewForCard size and other (there are some prepared configs for different animations)
  
- # Algorithm of logic and animations
- 1) Duplicate select view
-  - this step is needed for making select view on the top of screen. After original select view is duplicated - runs step 3)
- 2) Animate duplicate of select view
-  - scale down. After scale down runs step 4)
-  - scale up
- 3) Blur background and animate it
- 4) Show card and animate it
- 
- # Concept of animations
- 
- The main animations is:
- 1) scale down
- 2) scale up
- 
- Scale down can be turned off (watch Config properties #select view)
- 
- When starting scale up, also can be run shadow and radius animation (watch Config properties #select view)
+To add viewForCard listeners:
+```
+val blurSelect = BlurSelect.selectView(context, selectView, viewForCard, config)
+blurSelect.addCardListener(viewId, listener)
+```
  
  # Prepared configs
  
@@ -65,7 +52,7 @@ Where:
  - elevationTo - end shadow animation with this elevation
  
  Enables shadow animation.
- If you are using CardView as select view and you already have elevation, just specify 
+ If you are using CardView as select view and you already have elevation, just specify
  ```
  elevationFrom = CardView.cardElevation
  ```
@@ -75,6 +62,11 @@ Where:
  ```2) BlurConfig.withRadiusConfig(radiusFrom, radiusTo)```
  - radiusFrom - start animation with this radius
  - radiusTo - end animation with this radius
+ 
+ If you are using CardView as select view and you already have corner radius, just specify
+ ```
+ radiusFrom = CardView.radius
+ ```
  
  ![](with_radius_config.gif)
 
@@ -90,3 +82,25 @@ Where:
  ```5) BlurConfig.onlyScaleUpWithShadowConfig(scaleUpTo, elevationFrom, elevationTo)```
  
  ![](only_scale_up_with_shadow_config.gif)
+ 
+ ```6) BlurConfig.onlyScaleUpWithRadiusConfig(scaleUpTo, radiusFrom, radiusTo)```
+ 
+ ![](only_scale_up_with_radius_config.gif)
+ 
+ ```7) BlurConfig.onlyScaleUpWithShadowAndRadiusConfig(scaleUpTo, elevationFrom, elevationTo, radiusFrom, radiusTo)```
+ 
+ ![](only_scale_up_with_shadow_and_radius_config.gif)
+ 
+ # Config properties
+ 
+ ### Blurred background
+  - ```blurredBgBlurRadius``` - radius of background blur factor
+  - ```blurredBgBlurDownScaleFactor``` - background view bitmap downscale factor
+ ### Card (view that appears when selectView focused)
+  - ```cardAutoCalculateInnerViewSize``` - auto calculate card width and height (if you want to specify size manually - set it to false)
+  - ```cardTopAdditionMargin``` - additional card vertical margin
+  - ```cardStartEndAdditionMargin``` - additional card horizontal margin
+ ### SelectView (view for focus)
+  - ```selectViewCardDuplicateCardParams``` - duplicate card view params, such as elevation, background color and radius. If selectView is CardView - it can duplicate params. Or you can set it to false and specify radius, background color and elevation (by setting shadow animation) manually
+  - ```selectViewCardShadowAnimEnabled``` - enable shadow (elevation) animation. Specify ```selectViewCardAnimDurationShadowOn```, ```selectViewCardAnimDurationShadowOff```, ```selectViewCardAnimValueShadowOnFrom```, ```selectViewCardAnimValueShadowOnTo```, ```selectViewCardAnimValueShadowOffTo```
+  - ```selectViewCardRadiusAnimEnabled``` - enable radius (card corner radius) animation. Specify ```selectViewCardAnimDurationRadiusOn```, ```selectViewCardAnimDurationRadiusOff```, ```selectViewCardAnimValueRadiusOnFrom```, ```selectViewCardAnimValueRadiusOnTo```, ```selectViewCardAnimValueRadiusOffTo```
