@@ -58,7 +58,7 @@ blurSelect.addCardListener(viewId, listener)
  
  ![](with_shadow_config.gif)
  
- ```2) BlurConfig.withRadiusConfig(radiusFrom, radiusTo)```
+ ```2) BlurConfigs.withRadiusConfig(radiusFrom, radiusTo)```
  - radiusFrom - start animation with this radius
  - radiusTo - end animation with this radius
  
@@ -69,24 +69,24 @@ blurSelect.addCardListener(viewId, listener)
  
  ![](with_radius_config.gif)
 
- ```3) BlurConfig.onlyScaleUpConfig(scaleUpTo)```
+ ```3) BlurConfigs.onlyScaleUpConfig(scaleUpTo)```
  - scaleUpTo - end scale up animation with this scale (t can be lesser than 1)
  
  ![](only_scale_up_onfig.gif)
  
- ```4) BlurConfig.withShadowAndRadiusConfig(elevationFrom, elevationTo, radiusFrom, radiusTo)```
+ ```4) BlurConfigs.withShadowAndRadiusConfig(elevationFrom, elevationTo, radiusFrom, radiusTo)```
  
  ![](with_shadow_and_radius_config.gif)
 
- ```5) BlurConfig.onlyScaleUpWithShadowConfig(scaleUpTo, elevationFrom, elevationTo)```
+ ```5) BlurConfigs.onlyScaleUpWithShadowConfig(scaleUpTo, elevationFrom, elevationTo)```
  
  ![](only_scale_up_with_shadow_config.gif)
  
- ```6) BlurConfig.onlyScaleUpWithRadiusConfig(scaleUpTo, radiusFrom, radiusTo)```
+ ```6) BlurConfigs.onlyScaleUpWithRadiusConfig(scaleUpTo, radiusFrom, radiusTo)```
  
  ![](only_scale_up_with_radius_config.gif)
  
- ```7) BlurConfig.onlyScaleUpWithShadowAndRadiusConfig(scaleUpTo, elevationFrom, elevationTo, radiusFrom, radiusTo)```
+ ```7) BlurConfigs.onlyScaleUpWithShadowAndRadiusConfig(scaleUpTo, elevationFrom, elevationTo, radiusFrom, radiusTo)```
  
  ![](only_scale_up_with_shadow_and_radius_config.gif)
  
