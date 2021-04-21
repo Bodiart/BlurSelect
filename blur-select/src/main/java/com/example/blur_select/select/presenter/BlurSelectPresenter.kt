@@ -237,6 +237,7 @@ class BlurSelectPresenter(context: Context, selectView: View, viewForCard: View)
         data.card!!.scaleX = 0f
         data.card!!.scaleY = 0f
         data.card!!.alpha = 0f
+        data.config.cardBackgroundColor?.let { data.card!!.setCardBackgroundColor(it) }
     }
 
     private fun showInfoCardAddInnerView(viewForCard: View) {
