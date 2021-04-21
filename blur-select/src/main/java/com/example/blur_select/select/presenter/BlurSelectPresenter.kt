@@ -183,10 +183,12 @@ class BlurSelectPresenter(context: Context, selectView: View, viewForCard: View)
             data.selectViewDuplicateCardView!!.setCardBackgroundColor(selectView.cardBackgroundColor)
         } else {
             data.selectViewDuplicateCardView!!.radius = data.config.selectViewCardRadius
-            data.config.selectViewBackgroundColor?.let {
-                data.selectViewDuplicateCardView!!.setCardBackgroundColor(it)
-            }
-            data.selectViewDuplicateCardView!!.setCardBackgroundColor(data.config.selectViewCardBackgroundColor)
+            data.selectViewDuplicateCardView!!.setCardBackgroundColor(
+                data.config.selectViewCardBackgroundColor ?: Color.WHITE
+            )
+        }
+        data.config.selectViewCardBackgroundColor?.let {
+            data.selectViewDuplicateCardView!!.setCardBackgroundColor(it)
         }
     }
     /**
